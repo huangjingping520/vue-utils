@@ -11,7 +11,8 @@ import {
 
 export default defineConfig({
   shortcuts: [
-    ['btn', 'px-4 py-1 border border-solid border-blue-400 rounded inline-flex h-10 items-center justify-center  text-blue-400 cursor-pointer hover:bg-blue-400 hover:text-black']
+    ['btn', 'px-4 py-1 border border-solid border-blue-400 rounded inline-flex h-10 items-center justify-center  text-blue-400 cursor-pointer hover:bg-blue-400 hover:text-black'],
+    ['dis-btn', 'cursor-not-allowed op30 text-black bg-gray-400 hover:bg-gray-400 border-gray-400']
   ],
   presets: [
     presetUno(),
