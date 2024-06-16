@@ -13,9 +13,24 @@ const routerOptions: RouterOptions = {
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      redirect(): string {
-        return '/'
-      }
+      component: () => import('@/pages/not-found/index.vue')
+    },
+    {
+      path: '/catalogue',
+      name: 'Catalogue',
+      component: () => import('@/pages/catalogue/index.vue'),
+      children: [
+        {
+          path: 'first',
+          name: 'FirstCatalogue',
+          component: () => import('@/pages/catalogue/first-catalogue.vue')
+        },
+        {
+          path: 'second',
+          name: 'SecondCatalogue',
+          component: () => import('@/pages/catalogue/second-catalogue.vue')
+        }
+      ]
     }
   ]
 }

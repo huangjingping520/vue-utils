@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div p8>
-    <RouterView />
+  <div>
+    Second Catalogue
   </div>
 </template>
