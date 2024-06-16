@@ -7,7 +7,7 @@ const routerOptions: RouterOptions = {
     {
       path: '/',
       name: 'Root',
-      component: () => import('@/App.vue')
+      component: () => import('@/pages/home/index.vue')
 
     },
     {

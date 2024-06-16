@@ -10,7 +10,9 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  shortcuts: [],
+  shortcuts: [
+    ['btn', 'px-4 py-1 border border-solid border-blue-400 rounded inline-flex h-10 items-center justify-center  text-blue-400 cursor-pointer hover:bg-blue-400 hover:text-black']
+  ],
   presets: [
     presetUno(),
     presetAttributify(),
