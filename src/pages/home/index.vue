@@ -17,7 +17,7 @@ function gotoCatalogue() {
 <template>
   <div h="[100vh]" flex text-center>
     <div ma>
-      <div text-12 text-blue>
+      <div mb-4 text-12 text-blue>
         Hello {{ name }}
       </div>
       <Button @click="gotoCatalogue">
