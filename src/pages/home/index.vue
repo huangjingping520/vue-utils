@@ -9,7 +9,7 @@ const name = ref('Merlin Alex')
 
 function gotoCatalogue() {
   router.push({
-    name: 'FirstCatalogue'
+    name: 'Catalogue'
   })
 }
 </script>
