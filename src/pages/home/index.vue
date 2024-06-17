@@ -9,7 +9,10 @@ const name = ref('Merlin Alex')
 
 function gotoCatalogue() {
   router.push({
-    name: 'Catalogue'
+    name: 'Catalogue',
+    params: {
+      key: 'all'
+    }
   })
 }
 </script>

@@ -1,45 +1,52 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, onBeforeUpdate, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import Card from '@/components/Card.vue'
 import type { ICatalog } from '@/types/pages/catalogue'
+import { componentsCatalogueList, firstCatalogueList, utilsCatalogueList } from '@/mock'
 
-const firstCatalogueList = ref<ICatalog[]>()
+const router = useRouter()
 
-function gotoCatalogue(name: string) {
-  console.log(`Going to ${name}`)
+const catalogueList = ref<ICatalog[]>()
+
+function gotoTarget(key: string) {
+  router.push({
+    name: 'Catalogue',
+    params: {
+      key
+    }
+  })
+}
+
+const route = useRoute()
+
+function getCatalogueList(key: string) {
+  key === 'all' && (catalogueList.value = firstCatalogueList)
+  key === 'components' && (catalogueList.value = componentsCatalogueList)
+  key === 'utils' && (catalogueList.value = utilsCatalogueList)
 }
 
 onBeforeMount(() => {
-  firstCatalogueList.value = [
-    {
-      name: 'Components',
-      description: 'Some componets I created to use in my projects',
-      quantity: 10
-    },
-    {
-      name: 'Utils',
-      description: 'Some utils I created to use in my projects',
-      quantity: 20
-    },
-    {
-      name: 'Others',
-      description: 'Some other things',
-      quantity: 120
-    }
-  ]
+  const key = Array.isArray(route.params.key) ? route.params.key[0] : route.params.key
+  key && getCatalogueList(key)
+})
+
+onBeforeUpdate(() => {
+  const key = Array.isArray(route.params.key) ? route.params.key[0] : route.params.key
+  key && getCatalogueList(key)
 })
 </script>
 
 <template>
-  <div flex="~" gap-4 p8>
+  <div flex gap-4 p8>
     <Card
-      v-for="catalogue in firstCatalogueList"
-      :key="catalogue.name"
+      v-for="catalogue in catalogueList"
+      :key="catalogue.key"
       :name="catalogue.name"
       :description="catalogue.description"
       :quantity="catalogue.quantity"
       hover:cursor-pointer
-      hover:text-blue-300 @click="gotoCatalogue(catalogue.name)"
+      hover:text-blue-300 @click="gotoTarget(catalogue.key)"
     />
   </div>
 </template>

@@ -16,7 +16,7 @@ const routerOptions: RouterOptions = {
       component: () => import('@/pages/not-found/index.vue')
     },
     {
-      path: '/catalogue',
+      path: '/catalogue/:key',
       name: 'Catalogue',
       component: () => import('@/pages/catalogue/index.vue')
     }
