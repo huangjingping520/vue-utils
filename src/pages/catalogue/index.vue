@@ -38,7 +38,7 @@ onBeforeUpdate(() => {
 </script>
 
 <template>
-  <div flex gap-4 p8>
+  <div flex="~ wrap" gap-4 p8>
     <Card
       v-for="catalogue in catalogueList"
       :key="catalogue.key"
